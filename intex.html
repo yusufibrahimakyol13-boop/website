@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="docTitle">END POİNT MÜHENDİSLİK</title>
+  <meta name="description" content="END POİNT MÜHENDİSLİK - Elektrik taahhüt ve inşaat çözümleri." />
+
+  <style>
+    :root{
+      --bg:#07070a; --bg2:#0c0c12; --card:#0f1017;
+      --text:#f4f4f5; --muted:rgba(244,244,245,.72);
+      --border:rgba(244,244,245,.10);
+      --red:#e11d2e; --red2:#ff2a3d;
+      --shadow:0 20px 70px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 700px at 20% 10%, rgba(225,29,46,.18), transparent 55%),
+        radial-gradient(900px 700px at 80% 15%, rgba(244,244,245,.06), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 18px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(7,7,10,.70);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar__inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}
+    .brand__mark{
+      width:34px;height:34px;display:grid;place-items:center;border-radius:12px;
+      background:linear-gradient(135deg, rgba(225,29,46,.95), rgba(225,29,46,.15));
+      border:1px solid rgba(225,29,46,.45);
+      box-shadow:0 12px 30px rgba(225,29,46,.12);
+    }
+    .brand__text{white-space:nowrap}
+    .nav{display:flex;align-items:center;gap:14px;color:rgba(244,244,245,.85);font-size:14px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:14px;border:1px solid var(--border);
+      background:rgba(244,244,245,.04);transition:.2s ease;font-weight:900;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(244,244,245,.07)}
+    .btn--primary{background:rgba(225,29,46,.95);border-color:rgba(225,29,46,.70);color:#120308}
+    .btn--ghost{background:transparent;border-color:rgba(244,244,245,.18)}
+
+    .burger{display:none;background:none;border:0;cursor:pointer}
+    .burger span{display:block;width:22px;height:2px;background:rgba(244,244,245,.85);margin:5px 0}
+    .mobile-nav{
+      display:none;border-top:1px solid var(--border);
+      padding:12px 18px;gap:10px;flex-direction:column;
+    }
+    .mobile-nav a{padding:10px 0;color:rgba(244,244,245,.9)}
+    .mobile-nav .btn{width:max-content}
+
+    /* Sections */
+    .section{padding:34px 0}
+    .section--alt{background:linear-gradient(180deg, rgba(244,244,245,.03), transparent)}
+    .section__head h2{margin:0 0 6px;font-size:26px}
+    .section__head p{margin:0;color:var(--muted)}
+
+    /* Hero */
+    .hero{padding:58px 0 22px}
+    .hero__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch}
+    .hero__content{
+      background:rgba(15,16,23,.58);
+      border:1px solid var(--border);
+      border-radius:22px;padding:24px;box-shadow:var(--shadow);
+    }
+    .eyebrow{
+      display:inline-flex;gap:10px;align-items:center;
+      font-size:12px;letter-spacing:.22em;color:rgba(244,244,245,.72);text-transform:uppercase;
+    }
+    h1{margin:10px 0 10px;font-size:44px;line-height:1.08}
+    .lead{margin:0 0 18px;color:var(--muted);max-width:56ch}
+    .hero__cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .hero__stats{display:grid;gap:10px;margin-top:16px}
+    .stat{border:1px solid var(--border);background:rgba(244,244,245,.03);border-radius:16px;padding:14px}
+    .stat b{display:block} .stat span{color:var(--muted);font-size:13px}
+    .hero__media{display:flex;flex-direction:column;gap:10px}
+
+    .video-frame{
+      position:relative;border-radius:22px;overflow:hidden;
+      border:1px solid rgba(225,29,46,.20);
+      background:rgba(15,16,23,.58);box-shadow:var(--shadow);
+      min-height:360px;
+    }
+    .video{width:100%;height:100%;object-fit:cover;display:block}
+    .video-frame__overlay{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(600px 500px at 20% 20%, rgba(225,29,46,.16), transparent 60%),
+        linear-gradient(to top, rgba(7,7,10,.55), rgba(7,7,10,.05));
+      pointer-events:none;
+      z-index: 2;
+    }
+
+    .hero__badge{
+      display:flex;align-items:center;gap:10px;
+      border:1px solid var(--border);background:rgba(244,244,245,.03);
+      border-radius:16px;padding:12px 14px;color:rgba(244,244,245,.82);
+    }
+    .dot{width:10px;height:10px;border-radius:999px;background:var(--red2);box-shadow:0 0 0 6px rgba(225,29,46,.16)}
+
+    /* Services cards */
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+    .card{border:1px solid var(--border);background:rgba(15,16,23,.55);border-radius:var(--radius);padding:16px}
+    .card h3{margin:0 0 8px} .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Projects */
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .chip{
+      border:1px solid rgba(244,244,245,.14);background:rgba(244,244,245,.03);
+      color:rgba(244,244,245,.85);padding:9px 12px;border-radius:999px;
+      font-weight:900;cursor:pointer;user-select:none;transition:.15s ease;
+    }
+    .chip:hover{transform:translateY(-1px)}
+    .chip.active{border-color:rgba(225,29,46,.55);box-shadow:0 0 0 6px rgba(225,29,46,.10)}
+
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+    .section-title h2{margin:0;font-size:22px}
+    .section-title p{margin:0;color:rgba(244,244,245,.65);font-size:13px}
+
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .p-card{
+      border:1px solid rgba(244,244,245,.10);background:rgba(15,16,23,.55);
+      border-radius:18px;padding:16px;overflow:hidden;position:relative;min-height:180px;
+    }
+    .p-card:before{
+      content:"";position:absolute;inset:-40% -40%;
+      background:radial-gradient(circle at 20% 20%, rgba(225,29,46,.18), transparent 55%);
+      transform:rotate(8deg);pointer-events:none;
+    }
+    .p-card *{position:relative}
+    .p-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .tag{
+      font-size:12px;padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(225,29,46,.30);background:rgba(225,29,46,.12);
+      color:rgba(244,244,245,.90);white-space:nowrap;
+    }
+    .tag.soft{border-color:rgba(244,244,245,.16);background:rgba(244,244,245,.04)}
+    .p-title{margin:8px 0 8px;font-size:16px}
+    .p-meta{margin:0;color:rgba(244,244,245,.72);font-size:13px}
+    .p-kv{display:grid;gap:6px;margin-top:10px}
+    .kv{display:flex;gap:8px;color:rgba(244,244,245,.78);font-size:13px}
+    .kv b{color:rgba(244,244,245,.92)}
+    .p-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn-sm{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:9px 12px;border-radius:14px;border:1px solid rgba(244,244,245,.14);
+      background:rgba(244,244,245,.03);font-weight:900;
+    }
+    .btn-sm.primary{border-color:rgba(225,29,46,.60);background:rgba(225,29,46,.92);color:#120308}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-top:14px}
+    .box{border:1px solid rgba(244,244,245,.10);background:rgba(15,16,23,.55);border-radius:18px;padding:16px}
+    .box h2{margin:0 0 8px;font-size:18px}
+    .hint{margin:0 0 12px;color:rgba(244,244,245,.72);font-size:14px}
+    form{display:grid;gap:10px;margin-top:8px}
+    input,textarea,select{
+      width:100%;padding:12px 12px;border-radius:14px;border:1px solid rgba(244,244,245,.12);
+      background:rgba(244,244,245,.03);color:#fff;outline:none;
+    }
+    input:focus,textarea:focus,select:focus{border-color:rgba(225,29,46,.55);box-shadow:0 0 0 6px rgba(225,29,46,.10)}
+    textarea{min-height:130px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .mini{display:grid;gap:10px;margin-top:10px}
+    .mini .item{border:1px solid rgba(244,244,245,.10);background:rgba(244,244,245,.03);border-radius:16px;padding:12px}
+    .item b{display:block} .item span{color:rgba(244,244,245,.72);font-size:13px}
+    .map{border-radius:18px;overflow:hidden;border:1px solid rgba(225,29,46,.20);background:rgba(244,244,245,.03);height:240px}
+    .map iframe{width:100%;height:100%;border:0}
+
+    /* CTA */
+    .cta{
+      border:1px solid rgba(225,29,46,.25);
+      background:linear-gradient(135deg, rgba(225,29,46,.16), rgba(15,16,23,.55));
+      border-radius:22px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    }
+
+    /* Footer */
+    .footer{border-top:1px solid var(--border);padding:22px 0 46px;color:rgba(244,244,245,.70);margin-top:16px}
+    .footer__inner{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+    .footer__right{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* Floating */
+    .floating{
+      position:fixed;right:18px;bottom:18px;
+      padding:12px 14px;border-radius:999px;
+      background:rgba(225,29,46,.95);border:1px solid rgba(225,29,46,.70);
+      color:#120308;font-weight:900;box-shadow:0 18px 45px rgba(225,29,46,.18);
+    }
+
+    /* Fade layer: siyah + kırmızı degrade */
+    .fade-layer{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .45s ease;
+      z-index: 5;
+      background:
+        radial-gradient(700px 520px at 30% 25%, rgba(225,29,46,.30), transparent 60%),
+        linear-gradient(to top, rgba(7,7,10,.92), rgba(7,7,10,.25));
+    }
+    .fade-layer.show{opacity:1}
+
+    /* Grain / Noise layer (dosyasız) */
+    .noise-layer{
+      position:absolute;
+      inset:-20%;
+      pointer-events:none;
+      z-index: 4;
+      opacity: .10;             /* 0.06 - 0.14 arası ideal */
+      mix-blend-mode: overlay;
+      filter: contrast(130%) brightness(115%);
+      animation: noiseMove 2.2s steps(6) infinite;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 220px 220px;
+    }
+    @keyframes noiseMove{
+      0%   { transform: translate3d(0,0,0) }
+      10%  { transform: translate3d(-2%, -3%, 0) }
+      20%  { transform: translate3d(-4%,  2%, 0) }
+      30%  { transform: translate3d( 2%, -4%, 0) }
+      40%  { transform: translate3d( 4%,  3%, 0) }
+      50%  { transform: translate3d(-3%,  4%, 0) }
+      60%  { transform: translate3d( 3%,  0%, 0) }
+      70%  { transform: translate3d( 1%, -2%, 0) }
+      80%  { transform: translate3d(-1%,  2%, 0) }
+      90%  { transform: translate3d( 2%,  1%, 0) }
+      100% { transform: translate3d(0,0,0) }
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .nav{display:none} .burger{display:block}
+      .hero__grid{grid-template-columns:1fr} h1{font-size:34px}
+      .cards{grid-template-columns:1fr 1fr}
+      .projects-grid{grid-template-columns:1fr 1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .cards{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- AYARLAR (DOLDURULDU ✅) -->
+  <script>
+    const COMPANY = {
+      name: "END POİNT MÜHENDİSLİK",
+      shortName: "END POİNT",
+      whatsapp: "905343510312",      // sadece rakam, + yok, boşluk yok
+      phoneDisplay: "+90 534 351 03 12",
+      phoneTel: "+905343510312",
+      email: "info@endpointmuhendislik.com",
+      city: "Ergene / TEKİRDAĞ",
+      address: "Velimeşe OSB Mahallesi 122 Sokak No:3/1 Ergene/TEKİRDAĞ",
+      mapEmbedUrl: "" // Google Maps iframe embed linki (istersen ekle)
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("docTitle").textContent = COMPANY.name;
+      document.title = COMPANY.name + " | Elektrik Taahhüt & İnşaat";
+
+      document.querySelectorAll("[data-company-name]").forEach(el => el.textContent = COMPANY.name);
+      document.querySelectorAll("[data-company-short]").forEach(el => el.textContent = COMPANY.shortName || COMPANY.name);
+      document.querySelectorAll("[data-company-phone]").forEach(el => el.textContent = COMPANY.phoneDisplay);
+      document.querySelectorAll("[data-company-email]").forEach(el => el.textContent = COMPANY.email);
+      document.querySelectorAll("[data-company-city]").forEach(el => el.textContent = COMPANY.city);
+      document.querySelectorAll("[data-company-address]").forEach(el => el.textContent = COMPANY.address);
+
+      document.querySelectorAll("[data-wa]").forEach(a => a.href = `https://wa.me/${COMPANY.whatsapp}`);
+      document.querySelectorAll("[data-tel]").forEach(a => a.href = `tel:${COMPANY.phoneTel}`);
+      document.querySelectorAll("[data-mail]").forEach(a => a.href = `mailto:${COMPANY.email}`);
+
+      const mapWrap = document.getElementById("mapWrap");
+      if (COMPANY.mapEmbedUrl && mapWrap) {
+        mapWrap.innerHTML = `<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${COMPANY.mapEmbedUrl}"></iframe>`;
+      } else if (mapWrap) {
+        mapWrap.style.display = "grid";
+        mapWrap.style.placeItems = "center";
+        mapWrap.style.color = "rgba(244,244,245,.65)";
+        mapWrap.style.fontWeight = "900";
+        mapWrap.textContent = "Harita eklemek için mapEmbedUrl alanını doldurun";
+      }
+    });
+  </script>
+
+  <!-- TOPBAR (Kurumsal/Yatırımcı/Ürünler yok) -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="Anasayfa">
+        <span class="brand__mark">+</span>
+        <span class="brand__text" data-company-name>END POİNT MÜHENDİSLİK</span>
+      </a>
+
+      <nav class="nav" aria-label="Ana Menü">
+        <a href="#projeler">Projeler</a>
+        <a href="#iletisim" class="btn btn--primary">Teklif Al</a>
+      </nav>
+
+      <button class="burger" aria-label="Menüyü aç/kapat" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" data-mobile-nav>
+      <a href="#projeler">Projeler</a>
+      <a href="#iletisim" class="btn btn--primary">Teklif Al</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow">ELEKTRİK TAAHHÜT • İNŞAAT</p>
+          <h1>Güvenli altyapı, sürdürülebilir uygulama.</h1>
+          <p class="lead">
+            <span data-company-name>END POİNT MÜHENDİSLİK</span> olarak elektrik taahhüt ve inşaat süreçlerinde keşiften teslimata kadar planlı, ölçülebilir ve kurumsal hizmet sunuyoruz.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#iletisim">Ücretsiz Keşif / Teklif</a>
+            <a class="btn btn--ghost" href="#projeler">Projeler</a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat">
+              <b>Elektrik Taahhüt</b>
+              <span>AG/OG, pano, hat, aydınlatma</span>
+            </div>
+            <div class="stat">
+              <b>İnşaat & Tadilat</b>
+              <span>Uygulama, koordinasyon, teslim</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <div class="video-frame">
+            <!-- Dosyalar:
+                 assets/video/hero-electric.mp4
+                 assets/video/hero-construction.mp4
+            -->
+            <video
+              id="heroVideo"
+              class="video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/img/hero-poster.jpg"
+            >
+              <source id="heroSource" src="assets/video/hero-electric.mp4" type="video/mp4" />
+              Tarayıcınız video etiketini desteklemiyor.
+            </video>
+
+            <!-- Fade (degrade kararıp açılma) -->
+            <div id="fadeLayer" class="fade-layer"></div>
+
+            <!-- Grain / Noise -->
+            <div class="noise-layer" aria-hidden="true"></div>
+
+            <!-- Vurgu overlay -->
+            <div class="video-frame__overlay"></div>
+          </div>
+
+          <div class="hero__badge">
+            <span class="dot"></span>
+            <span>Siyah/Kırmızı Kurumsal Tema</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HİZMETLER -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Hizmet Alanlarımız</h2>
+          <p>Keşiften teslimata kadar tüm adımları planlı ve dokümante şekilde yürütürüz.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Elektrik Projelendirme</h3>
+            <p>İhtiyaç analizi, keşif, uygulama projeleri ve revizyon yönetimi.</p>
+          </article>
+          <article class="card">
+            <h3>Elektrik Taahhüt</h3>
+            <p>Kablolama, pano, enerji dağıtımı, aydınlatma, test ve devreye alma.</p>
+          </article>
+          <article class="card">
+            <h3>Zayıf Akım Sistemleri</h3>
+            <p>Yangın algılama, CCTV, data altyapı, geçiş kontrol çözümleri.</p>
+          </article>
+          <article class="card">
+            <h3>İnşaat & Tadilat</h3>
+            <p>Şantiye organizasyonu, uygulama, koordinasyon ve teslim süreçleri.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJELER -->
+    <section class="section section--alt" id="projeler">
+      <div class="container">
+        <div class="section__head">
+          <h2>Projeler</h2>
+          <p>Örnek içeriktir; proje listen ile birebir doldurulur.</p>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Proje Filtreleri">
+          <button class="chip active" data-filter="all" role="tab" aria-selected="true">Tümü</button>
+          <button class="chip" data-filter="devam" role="tab" aria-selected="false">Devam Eden</button>
+          <button class="chip" data-filter="tamam" role="tab" aria-selected="false">Tamamlanan</button>
+          <button class="chip" data-filter="elektrik" role="tab" aria-selected="false">Elektrik Taahhüt</button>
+          <button class="chip" data-filter="insaat" role="tab" aria-selected="false">İnşaat</button>
+          <button class="chip" data-filter="zayif" role="tab" aria-selected="false">Zayıf Akım</button>
+        </div>
+
+        <div class="section-title" style="margin-top:18px">
+          <h2>Devam Eden Projeler</h2>
+          <p>Güncel iş listesi</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="p-card" data-type="devam elektrik">
+            <div class="p-top">
+              <div class="tag">Devam Eden</div>
+              <div class="tag soft">Elektrik</div>
+            </div>
+            <h3 class="p-title">İş Merkezi Ortak Alan Elektrik Uygulaması</h3>
+            <p class="p-meta">Konum: İstanbul • Kapsam: AG dağıtım, aydınlatma, pano revizyon</p>
+            <div class="p-kv">
+              <div class="kv"><b>Başlangıç:</b> <span>—</span></div>
+              <div class="kv"><b>Tahmini Teslim:</b> <span>—</span></div>
+            </div>
+            <div class="p-actions">
+              <a class="btn-sm" href="#iletisim">Detay/Keşif</a>
+              <a class="btn-sm primary" href="#iletisim">Teklif Al</a>
+            </div>
+          </article>
+
+          <article class="p-card" data-type="devam insaat">
+            <div class="p-top">
+              <div class="tag">Devam Eden</div>
+              <div class="tag soft">İnşaat</div>
+            </div>
+            <h3 class="p-title">Ofis Katı Tadilat & İnşaat İşleri</h3>
+            <p class="p-meta">Konum: İstanbul • Kapsam: bölme, sıva/boya, koordinasyon</p>
+            <div class="p-kv">
+              <div class="kv"><b>Başlangıç:</b> <span>—</span></div>
+              <div class="kv"><b>Tahmini Teslim:</b> <span>—</span></div>
+            </div>
+            <div class="p-actions">
+              <a class="btn-sm" href="#iletisim">Detay/Keşif</a>
+              <a class="btn-sm primary" href="#iletisim">Teklif Al</a>
+            </div>
+          </article>
+
+          <article class="p-card" data-type="devam zayif">
+            <div class="p-top">
+              <div class="tag">Devam Eden</div>
+              <div class="tag soft">Zayıf Akım</div>
+            </div>
+            <h3 class="p-title">Yangın Algılama (Ortak Alan) Revizyon</h3>
+            <p class="p-meta">Konum: — • Kapsam: plan, cihaz yerleşimi, kablolama</p>
+            <div class="p-kv">
+              <div class="kv"><b>Başlangıç:</b> <span>—</span></div>
+              <div class="kv"><b>Tahmini Teslim:</b> <span>—</span></div>
+            </div>
+            <div class="p-actions">
+              <a class="btn-sm" href="#iletisim">Detay/Keşif</a>
+              <a class="btn-sm primary" href="#iletisim">Teklif Al</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-title" style="margin-top:22px">
+          <h2>Tamamlanan Projeler</h2>
+          <p>Referanslar</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="p-card" data-type="tamam elektrik">
+            <div class="p-top">
+              <div class="tag">Tamamlandı</div>
+              <div class="tag soft">Elektrik</div>
+            </div>
+            <h3 class="p-title">Depo Aydınlatma & Enerji Hatları</h3>
+            <p class="p-meta">Konum: — • Kapsam: led aydınlatma, pano düzenleme</p>
+            <div class="p-kv">
+              <div class="kv"><b>Teslim:</b> <span>—</span></div>
+              <div class="kv"><b>Not:</b> <span>Test ve devreye alma raporu</span></div>
+            </div>
+            <div class="p-actions">
+              <a class="btn-sm" href="#iletisim">Benzer İş</a>
+              <a class="btn-sm primary" href="#iletisim">Teklif Al</a>
+            </div>
+          </article>
+
+          <article class="p-card" data-type="tamam insaat">
+            <div class="p-top">
+              <div class="tag">Tamamlandı</div>
+              <div class="tag soft">İnşaat</div>
+            </div>
+            <h3 class="p-title">Mağaza İç Mekân Uygulaması</h3>
+            <p class="p-meta">Konum: — • Kapsam: tadilat, tavan/zemin, koordinasyon</p>
+            <div class="p-kv">
+              <div class="kv"><b>Teslim:</b> <span>—</span></div>
+              <div class="kv"><b>Not:</b> <span>İş programına uygun teslim</span></div>
+            </div>
+            <div class="p-actions">
+              <a class="btn-sm" href="#iletisim">Benzer İş</a>
+              <a class="btn-sm primary" href="#iletisim">Teklif Al</a>
+            </div>
+          </article>
+
+          <article class="p-card" data-type="tamam zayif">
+            <div class="p-top">
+              <div class="tag">Tamamlandı</div>
+              <div class="tag soft">Zayıf Akım</div>
+            </div>
+            <h3 class="p-title">CCTV + Data Altyapı Kurulumu</h3>
+            <p class="p-meta">Konum: — • Kapsam: kamera, rack, kablolama, etiketleme</p>
+            <div class="p-kv">
+              <div class="kv"><b>Teslim:</b> <span>—</span></div>
+              <div class="kv"><b>Not:</b> <span>As-built dokümantasyon</span></div>
+            </div>
+            <div class="p-actions">
+              <a class="btn-sm" href="#iletisim">Benzer İş</a>
+              <a class="btn-sm primary" href="#iletisim">Teklif Al</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta" style="margin-top:18px">
+          <div>
+            <h2 style="margin:0 0 6px">Projeniz için teklif isteyin</h2>
+            <p style="margin:0;color:rgba(244,244,245,.72)">Keşif ve kapsam netleştirme sonrası hızlı teklif.</p>
+          </div>
+          <a class="btn btn--primary" href="#iletisim">İletişim</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- İLETİŞİM -->
+    <section class="section" id="iletisim">
+      <div class="container">
+        <div class="section__head">
+          <h2>İletişim</h2>
+          <p>Teklif talebi için formu doldurabilir veya direkt arayabilirsiniz.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="box">
+            <h2>Teklif Talep Formu</h2>
+            <p class="hint">Kapsamı yaz; aynı gün dönüş yapalım.</p>
+
+            <form id="leadForm">
+              <div class="row">
+                <input name="name" required placeholder="Ad Soyad" />
+                <input name="phone" required placeholder="Telefon" />
+              </div>
+
+              <div class="row">
+                <input name="email" placeholder="E-posta (opsiyonel)" />
+                <select name="service">
+                  <option value="Elektrik Taahhüt">Elektrik Taahhüt</option>
+                  <option value="Elektrik Proje">Elektrik Proje</option>
+                  <option value="Zayıf Akım">Zayıf Akım</option>
+                  <option value="İnşaat / Tadilat">İnşaat / Tadilat</option>
+                  <option value="Diğer">Diğer</option>
+                </select>
+              </div>
+
+              <input name="location" placeholder="Konum / İlçe" />
+              <textarea name="message" placeholder="Kısaca işin kapsamını yazın (m2, kat sayısı, teslim tarihi vb.)"></textarea>
+
+              <div class="actions">
+                <button class="btn btn--primary" type="submit">WhatsApp ile Gönder</button>
+                <a class="btn btn--ghost" data-tel href="#">Ara</a>
+                <a class="btn btn--ghost" data-mail href="#">E-posta</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="box">
+            <h2>İletişim Bilgileri</h2>
+            <p class="hint" style="margin-bottom:10px">Bilgiler güncel olarak eklenmiştir.</p>
+
+            <div class="mini">
+              <div class="item">
+                <b>Telefon</b>
+                <span data-company-phone>+90 534 351 03 12</span>
+              </div>
+              <div class="item">
+                <b>E-posta</b>
+                <span data-company-email>info@endpointmuhendislik.com</span>
+              </div>
+              <div class="item">
+                <b>Şehir</b>
+                <span data-company-city>Ergene / TEKİRDAĞ</span>
+              </div>
+              <div class="item">
+                <b>Adres</b>
+                <span data-company-address>Velimeşe OSB Mahallesi 122 Sokak No:3/1 Ergene/TEKİRDAĞ</span>
+              </div>
+            </div>
+
+            <div class="map" id="mapWrap" aria-label="Harita alanı" style="margin-top:12px"></div>
+
+            <div class="actions" style="margin-top:12px">
+              <a class="btn btn--primary" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn--ghost" href="#projeler">Projeler</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container cta">
+        <div>
+          <h2 style="margin:0 0 6px">Hızlı keşif, net teklif</h2>
+          <p style="margin:0;color:rgba(244,244,245,.72)">Gerekirse yerinde keşif sonrası teklif.</p>
+        </div>
+        <a class="btn btn--primary" href="#iletisim">İletişim</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <div class="brand">
+          <span class="brand__mark" style="width:28px;height:28px;border-radius:10px">+</span>
+          <span class="brand__text" data-company-name>END POİNT MÜHENDİSLİK</span>
+        </div>
+        <p>© <span id="year"></span> Tüm hakları saklıdır.</p>
+      </div>
+      <div class="footer__right">
+        <a href="#projeler">Projeler</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating" data-wa href="#" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+
+  <script>
+    // Mobil menü
+    const burger = document.querySelector("[data-burger]");
+    const mobileNav = document.querySelector("[data-mobile-nav]");
+    if (burger && mobileNav) {
+      burger.addEventListener("click", () => {
+        const isOpen = mobileNav.style.display === "flex";
+        mobileNav.style.display = isOpen ? "none" : "flex";
+      });
+      mobileNav.querySelectorAll("a").forEach(a=>{
+        a.addEventListener("click", ()=> mobileNav.style.display="none");
+      });
+    }
+
+    // Yıl
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Proje filtre
+    const chips = document.querySelectorAll(".chip");
+    const cards = document.querySelectorAll(".p-card");
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        const f = chip.dataset.filter;
+        cards.forEach(card => {
+          const types = (card.dataset.type || "").split(" ");
+          const show = (f === "all") ? true : types.includes(f);
+          card.style.display = show ? "" : "none";
+        });
+      });
+    });
+
+    // WhatsApp form gönderimi
+    const form = document.getElementById("leadForm");
+    function buildText(data){
+      return [
+        "Teklif Talebi",
+        "----------------",
+        "Firma: " + (COMPANY.name || ""),
+        "Ad Soyad: " + (data.name || ""),
+        "Telefon: " + (data.phone || ""),
+        "E-posta: " + (data.email || ""),
+        "Hizmet: " + (data.service || ""),
+        "Konum / İlçe: " + (data.location || ""),
+        "",
+        "Mesaj:",
+        (data.message || "")
+      ].join("\n");
+    }
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const data = Object.fromEntries(fd.entries());
+      const text = encodeURIComponent(buildText(data));
+      window.open(`https://wa.me/${COMPANY.whatsapp}?text=${text}`, "_blank");
+    });
+
+    // HERO video otomatik dönüş + FADE geçiş
+    const heroVideo  = document.getElementById("heroVideo");
+    const heroSource = document.getElementById("heroSource");
+    const fadeLayer  = document.getElementById("fadeLayer");
+
+    const heroVideos = [
+      "assets/video/hero-electric.mp4",
+      "assets/video/hero-construction.mp4"
+    ];
+
+    let heroIndex = 0;
+    const SWITCH_SECONDS = 10;
+    const FADE_OUT_MS = 420;
+    const FADE_IN_MS  = 420;
+
+    function wait(ms){ return new Promise(res => setTimeout(res, ms)); }
+
+    async function switchHeroVideoFade(){
+      fadeLayer.classList.add("show");
+      await wait(FADE_OUT_MS);
+
+      heroIndex = (heroIndex + 1) % heroVideos.length;
+
+      const wasPlaying = !heroVideo.paused;
+      heroSource.src = heroVideos[heroIndex];
+      heroVideo.load();
+
+      heroVideo.onloadeddata = async () => {
+        if (wasPlaying) heroVideo.play().catch(()=>{});
+        await wait(90);
+        fadeLayer.classList.remove("show");
+        await wait(FADE_IN_MS);
+      };
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // autoplay güvence
+      if (heroVideo) heroVideo.play().catch(()=>{});
+
+      // otomatik dönüş
+      setInterval(() => {
+        switchHeroVideoFade().catch(()=>{});
+      }, SWITCH_SECONDS * 1000);
+    });
+  </script>
+</body>
+</html>
